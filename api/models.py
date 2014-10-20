@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Tick(models.Model):
     high = models.DecimalField(max_digits=22, decimal_places=12)
     low = models.DecimalField(max_digits=22, decimal_places=12)

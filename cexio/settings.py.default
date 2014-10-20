@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'api',
     'crons',
-    'django_cron'
+    'django_cron',
+    'front'
 )
 
 MIDDLEWARE_CLASSES = (
