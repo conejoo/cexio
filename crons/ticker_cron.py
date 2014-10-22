@@ -39,9 +39,7 @@ class TickerCron(CronJobBase):
             'Connection': 'keep-alive'
         }
         for from_currency, market in ALL_Markets.iteritems():
-            print from_currency
             for to_currency in market:
-                print to_currency
                 url = 'https://cex.io/api/ticker/%s/%s' % (to_currency, from_currency)
                 req = urllib2.Request(url, headers=hdr)
                 serialized_data = urllib2.urlopen(req).read()
@@ -59,4 +57,3 @@ class TickerCron(CronJobBase):
                 tick.volume = Decimal(data['volume'])
                 tick.last = Decimal(data['last'])
                 tick.save()
-                break

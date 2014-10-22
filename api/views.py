@@ -14,5 +14,5 @@ def class_for_name(module_name, class_name):
 
 def get(request, collection):
     loaded_class = class_for_name('api.models', collection)
-    response_data = loaded_class.objects.all()
+    response_data = loaded_class.objects.distinct('currency1', 'currency2')
     return HttpResponse(serializers.serialize('json', response_data), content_type="application/json")
