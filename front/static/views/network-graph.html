@@ -1,4 +1,18 @@
-<div>{{tickers}}</div>
 <div class="main-graph">
 	<div id="container"></div>
 </div>
+<div>
+	<select ng-options="order as order.label for order in cycle_order_by" ng-model="order.value"></select>
+	<input type="checkbox" ng-model="order.reverse"> Reverse
+</div>
+<table>
+	<tr>
+		<th>Ratio</th><th>Path</th><th>Amount</th><th>Amount (BTC)</th>
+	</tr>
+	<tr ng-repeat="cycle in found_cycles | orderBy: order.value.predicate: order.reverse">
+		<td>{{cycle.ratio}}</td>
+		<td>{{cycle.path}}</td>
+		<td>{{cycle.amount}}</td>
+		<td>{{cycle.btc_amount}}</td>
+	</tr>
+</table>

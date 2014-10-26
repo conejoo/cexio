@@ -12,6 +12,12 @@ def class_for_name(module_name, class_name):
     return c
 
 
+def get_all(request, collection):
+    loaded_class = class_for_name('api.models', collection)
+    response_data = loaded_class.objects.all()
+    return HttpResponse(serializers.serialize('json', response_data), content_type="application/json")
+
+
 def get(request, collection):
     loaded_class = class_for_name('api.models', collection)
     response_data = loaded_class.objects.distinct('currency1', 'currency2')
